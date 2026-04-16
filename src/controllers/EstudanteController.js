@@ -1,4 +1,4 @@
-import { prisma } from '../../lib/prisma'
+import { prisma } from '../../lib/prisma.js';
 
 export const EstudanteController = {
   async criar(req, res) {
@@ -8,7 +8,7 @@ export const EstudanteController = {
       });
       return res.status(201).json(novoEstudante);
     } catch (error) {
-      return res.status(400).json({ error: "Erro ao criar estudante" });
+      return res.status(400).json({ error: `Erro ao criar estudante ${error}` });
     }
   },
 
