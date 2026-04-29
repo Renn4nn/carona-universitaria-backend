@@ -57,10 +57,10 @@ O Scrum foi escolhido por permitir:
 ---
 
 ## 👥 Papéis da Equipe
-- Alisson Sousa — Product Owner  
-- Renan Augusto — Backend  
-- Luhan Marques — Frontend  
-- Virgílio Rossetti — QA  
+- Alisson — Scrum Master / Product Owner
+- Renan — Desenvolvedor Backend
+- Luhan — Desenvolvedor Frontend
+- Virgilio — QA (Testes) e Documentação 
 
 ---
 
