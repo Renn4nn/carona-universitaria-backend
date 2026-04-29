@@ -1,4 +1,4 @@
-# 🚗 Planejamento do Projeto - Carona Universitária Inteligente
+# 🚗 Planejamento do Projeto - Carona Universitária Inteligente.
 
 ## 📄 Modelo de Processo Escolhido
 O modelo adotado foi o Scrum, uma metodologia ágil baseada em ciclos iterativos e incrementais (sprints), com foco na entrega contínua de valor.
