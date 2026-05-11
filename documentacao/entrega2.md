@@ -165,5 +165,37 @@ O Scrum foi escolhido por permitir:
 
 ---
 
+## 🎨 Desenvolvimento Frontend — Landing Page
+
+Foi desenvolvida a landing page inicial do projeto **Carona Universitária Inteligente**, com o objetivo de apresentar a proposta da plataforma, seus benefícios e funcionalidades principais aos usuários.
+
+A interface foi construída utilizando tecnologias modernas de desenvolvimento web, com foco em responsividade, experiência do usuário e organização visual.
+
+### ✅ Funcionalidades da Landing Page
+- Apresentação do projeto
+- Seção de benefícios
+- Navegação responsiva
+- Botões de ação
+- Estrutura adaptada para dispositivos móveis
+- Identidade visual do sistema
+
+### 💻 Tecnologias Utilizadas
+- React
+- JavaScript
+- HTML5
+- CSS3
+- Git e GitHub
+
+### 🎯 Objetivo
+A landing page serve como protótipo funcional inicial do sistema, permitindo validar a interface e a experiência do usuário antes da integração completa com o backend.
+
+### 🔗 Repositórios e Deploy
+- Frontend: https://github.com/Renn4nn/carona-universitaria-frontend
+- Backend: https://github.com/Renn4nn/carona-universitaria-backend
+- Deploy: https://carona-universitaria-landing-page.vercel.app/
+
+---
+
 ## 🧠 Considerações
 O projeto foi planejado para entregar valor incremental em cada sprint, garantindo evolução contínua e validação do sistema até a entrega do MVP funcional.
+
