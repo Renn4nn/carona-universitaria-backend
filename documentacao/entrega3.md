@@ -2,7 +2,7 @@
 
 ## Requisitos Funcionais
 
-[Ver tabela completa de requisitos](arquivos/requisitos)
+[Ver tabela completa de requisitos](arquivos/requisitos/Requisitos.html)
 
 ### RF01
 O sistema deve permitir o cadastro de usuários utilizando e-mail institucional e senha.
@@ -32,7 +32,7 @@ O sistema deve permitir avaliações entre motoristas e passageiros após a fina
 
 ## Requisitos Não Funcionais
 
-[Ver tabela completa de requisitos](arquivos/requisitos)
+[Ver tabela completa de requisitos](arquivos/requisitos/Requisitos.html)
 
 ### RNF01
 O sistema deve possuir tempo de resposta inferior a 3 segundos para buscas de caronas.
