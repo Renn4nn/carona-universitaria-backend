@@ -2,6 +2,7 @@
 
 ## 📚 Entregas Juliana
 - [Entrega 2](documentacao/entrega2.md)
+- [Entrega 3](documentacao/entrega3.md)
 
 ---
 
