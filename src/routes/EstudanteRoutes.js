@@ -3,7 +3,7 @@ import { EstudanteController } from '../controllers/EstudanteController.js';
 
 const router = Router();
 
-router.post('/estudantes', EstudanteController.criar);
+router.post('/estudantes', EstudanteController.criar); // cria um novo estudante
 router.get('/estudantes', EstudanteController.listar);
 router.get('/estudantes/:id', EstudanteController.buscarPorId);
 
