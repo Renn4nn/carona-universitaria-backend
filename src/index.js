@@ -9,7 +9,7 @@ app.use(cors())
 app.use(express.json());
 
 // rotas
-app.use(EstudanteRoutes);
+app.use('/api', EstudanteRoutes);
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`)
