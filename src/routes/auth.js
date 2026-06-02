@@ -1,22 +1,21 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
+import express from 'express';
+import jwt from 'jsonwebtoken';
+import connection from '../database/connection.js';
+import { segredo } from '../middleware/auth.js';
 
 const router = express.Router();
-
-const connection = require('../database/connection');
-const { segredo } = require('../middleware/auth');
 
 router.post('/login', (req, res) => {
 
   const { email, senha } = req.body;
 
-  const sql = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+  const sql = 'SELECT * FROM estudantes WHERE email = ? AND senha = ?';
 
   connection.query(sql, [email, senha], (erro, resultados) => {
 
     if (erro) {
       return res.status(500).json({
-        erro: 'Erro ao autenticar usuário'
+        erro: 'Erro ao autenticar estudante'
       });
     }
 
@@ -49,4 +48,4 @@ router.post('/login', (req, res) => {
 
 });
 
-module.exports = router;
+export default router;

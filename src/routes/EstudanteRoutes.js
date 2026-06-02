@@ -29,7 +29,7 @@ router.get('/estudantes/:id', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
+router.post('/estudantes', (req, res) => {
   const { nome, telefone, cpf, rgm, email, senha, instituicao, curso, periodo } = req.body;
   const sql = `INSERT INTO estudantes (nome, telefone, cpf, rgm, email, senha, instituicao, curso, periodo) VALUES (?,?,?,?,?,?,?,?,?)`;
 
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
   })
 });
 
-router.put('/:id', (req, res) => {
+router.put('/estudantes/:id', (req, res) => {
   const id = req.params.id;
   const { nome, telefone, cpf, rgm, email, senha, instituicao, curso, periodo } = req.body;
   const sql = `UPDATE estudantes SET nome = ?, telefone = ?, cpf = ?, rgm = ?, email = ?, senha = ?, instituicao = ?, curso = ?, periodo = ? WHERE id = ?`;
@@ -63,7 +63,7 @@ router.put('/:id', (req, res) => {
   })
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/estudantes/:id', (req, res) => {
   const id = req.params.id;
   const sql = 'DELETE FROM estudantes WHERE id = ?';
   connection.query(sql, [id], (erro, resultado) => {
