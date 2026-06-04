@@ -1,0 +1,218 @@
+Estudantes - Renan
+Avaliação - luhan 
+Caronas - Alisson
+Caronas Participantes - Virgilio
+
+CREATE DATABASE carona_universitaria DEFAULT CHARACTER SET = 'utf8mb4';
+
+USE carona_universitaria;
+
+CREATE TABLE estudantes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    telefone VARCHAR(11) NOT NULL,
+    cpf VARCHAR(11) NOT NULL UNIQUE,
+    rgm VARCHAR(10) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    instituicao VARCHAR(255) NOT NULL,
+    curso VARCHAR(255) NOT NULL,
+    periodo VARCHAR(255) NOT NULL,
+    verificado BOOLEAN NOT NULL DEFAULT FALSE,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS caronas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    motorista_id INT NOT NULL,
+    origem VARCHAR(100),
+    destino VARCHAR(100),
+    horario VARCHAR(20),
+    vagas INT
+);
+
+CREATE TABLE IF NOT EXISTS avaliacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    avaliador_id INT NOT NULL,
+    avaliado_id INT NOT NULL,
+    carona_id INT NOT NULL,
+    nota INT NOT NULL CHECK (nota BETWEEN 1 AND 5),
+    comentario TEXT,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (avaliador_id) REFERENCES estudantes (id) ON DELETE CASCADE,
+    FOREIGN KEY (avaliado_id) REFERENCES estudantes (id) ON DELETE CASCADE,
+    FOREIGN KEY (carona_id) REFERENCES caronas (id) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS caronas_participantes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    carona_id INT NOT NULL,
+    estudante_id INT NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL DEFAULT 0.00,
+    confirmado_em DATETIME DEFAULT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'pendente',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (carona_id) REFERENCES caronas (id) ON DELETE CASCADE,
+    FOREIGN KEY (estudante_id) REFERENCES estudantes (id) ON DELETE CASCADE
+);
+
+-- INSERTS: estudantes
+
+INSERT INTO
+    estudantes (
+        nome,
+        telefone,
+        cpf,
+        rgm,
+        email,
+        senha,
+        instituicao,
+        curso,
+        periodo,
+        verificado,
+        ativo
+    )
+VALUES (
+        'Renan Augusto',
+        '43999991111',
+        '11122233344',
+        '20260001',
+        'renan@positivo.edu.br',
+        'senhaCriptografada123',
+        'Universidade Positivo',
+        'Engenharia de Software',
+        '5º Semestre',
+        TRUE,
+        TRUE
+    ),
+    (
+        'Luhan Marques',
+        '43999992222',
+        '22233344455',
+        '20260002',
+        'luhan@positivo.edu.br',
+        'senhaCriptografada456',
+        'Universidade Positivo',
+        'Engenharia de Software',
+        '5º Semestre',
+        TRUE,
+        TRUE
+    ),
+    (
+        'Alisson Sousa',
+        '43999993333',
+        '33344455566',
+        '20260003',
+        'alisson@positivo.edu.br',
+        'senhaCriptografada789',
+        'Universidade Positivo',
+        'Engenharia de Software',
+        '5º Semestre',
+        TRUE,
+        TRUE
+    ),
+    (
+        'Virgilio Rossetti',
+        '43999994444',
+        '44455566677',
+        '20260004',
+        'virgilio@positivo.edu.br',
+        'senhaCriptografada000',
+        'Universidade Positivo',
+        'Engenharia de Software',
+        '5º Semestre',
+        FALSE,
+        TRUE
+    );
+
+-- INSERTS: caronas
+
+INSERT INTO
+    caronas (
+        motorista_id,
+        origem,
+        destino,
+        horario,
+        vagas
+    )
+VALUES (
+        1,
+        'Av. Higienópolis, 500 - Centro',
+        'Universidade Positivo - Campus Londrina',
+        '2026-06-04 18:30:00',
+        4
+    ),
+    (
+        3,
+        'Gleba Palhano',
+        'Universidade Positivo - Campus Londrina',
+        '2026-06-05 07:15:00',
+        3
+    );
+
+-- INSERTS: caronas_participantes
+
+INSERT INTO
+    caronas_participantes (
+        carona_id,
+        estudante_id,
+        valor,
+        confirmado_em,
+        status
+    )
+VALUES (
+        1,
+        2,
+        5.00,
+        '2026-06-03 14:00:00',
+        'confirmado'
+    ),
+    (
+        1,
+        4,
+        5.00,
+        '2026-06-03 14:15:00',
+        'confirmado'
+    ),
+    (2, 1, 4.50, NULL, 'pendente');
+
+-- INSERTS: avaliacoes
+
+INSERT INTO
+    avaliacoes (
+        avaliador_id,
+        avaliado_id,
+        carona_id,
+        nota,
+        comentario
+    )
+VALUES (
+        2,
+        1,
+        1,
+        5,
+        'Motorista super gente boa, playlist nota 10 e chegou no horário.'
+    ),
+    (
+        4,
+        1,
+        1,
+        4,
+        'Boa carona, mas o trânsito na Higienópolis estava meio travado.'
+    );
+
+-- SELECT: caronas_participantes
+
+SELECT
+    c.id AS carona_no,
+    m.nome AS motorista,
+    c.origem AS partida,
+    p.nome AS passageiro,
+    cp.status AS status_passageiro
+FROM
+    caronas c
+    JOIN estudantes m ON c.motorista_id = m.id
+    JOIN caronas_participantes cp ON cp.carona_id = c.id
+    JOIN estudantes p ON cp.estudante_id = p.id;
