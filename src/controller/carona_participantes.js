@@ -1,4 +1,4 @@
-import service from '../services/CaronaParticipanteService.js';
+import service from '../services/carona_participantes.js';
 
 class CaronasParticipantesController {
   index = (req, res) => {

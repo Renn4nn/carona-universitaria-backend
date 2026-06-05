@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import controller from '../controller.js/CaronaParticipanteController.js';
+import controller from '../controller/carona_participantes.js';
 import { protegerRota } from '../middleware/auth.js';
 
 const router = Router();
+
 
 router.get('/caronas-participantes', controller.index);
 router.get('/caronas-participantes/carona/:carona_id', controller.showByCarona);

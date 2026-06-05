@@ -1,4 +1,4 @@
-import model from '../models/CaronaParticipanteModel.js';
+import model from '../models/carona_participantes.js';
 
 class CaronasParticipantesService {
   buscarTodos(callback) {
