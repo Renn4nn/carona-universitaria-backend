@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors'
-import EstudanteRoutes from './routes/EstudanteRoutes.js';
+import estudantesRoutes from './routes/estudantes.js';
 import authRoutes from './routes/auth.js';
 import caronaParticipantesRoutes from './routes/carona_participantes.js';
 
@@ -12,7 +12,7 @@ app.use(express.json());
 
 // rotas
 app.use('/auth', authRoutes);
-app.use('/estudantes', EstudanteRoutes);
+app.use(estudantesRoutes);
 app.use(caronaParticipantesRoutes);
 
 
