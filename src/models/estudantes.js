@@ -1,32 +1,92 @@
 import connection from '../database/connection.js';
 
-class EstudantesModel {
-  findAll() {
+const EstudanteModel = {
+
+  findAll(callback) {
     const sql = 'SELECT * FROM estudantes';
-    connection.query(sql);
-  }
 
-  findById(id) {
+    connection.query(sql, callback);
+  },
+
+  findById(id, callback) {
     const sql = 'SELECT * FROM estudantes WHERE id = ?';
-    connection.query(sql, [id]);
-  }
 
-  create(dados) {
-    const { nome, telefone, cpf, rgm, email, senha, instituicao, curso, periodo } = dados;
-    const sql = 'INSERT INTO estudantes (nome, telefone, cpf, rgm, email, senha, instituicao, curso, periodo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
-    connection.query(sql, [nome, telefone, cpf, rgm, email, senha, instituicao, curso, periodo]);
-  }
+    connection.query(sql, [id], callback);
+  },
 
-  update(id, dados) {
-    const { nome, telefone, cpf, rgm, email, senha, instituicao, curso, periodo } = dados;
-    const sql = 'UPDATE estudantes SET nome = ?, telefone = ?, cpf = ?, rgm = ?, email = ?, senha = ?, instituicao = ?, curso = ?, periodo = ? WHERE id = ?';
-    connection.query(sql, [nome, telefone, cpf, rgm, email, senha, instituicao, curso, periodo, id]);
-  }
+  create(estudante, callback) {
+    const sql = `
+            INSERT INTO estudantes (
+                nome,
+                telefone,
+                cpf,
+                rgm,
+                email,
+                senha,
+                instituicao,
+                curso,
+                periodo,
+                verificado,
+                ativo
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `;
 
-  delete(id) {
+    connection.query(sql, [
+      estudante.nome,
+      estudante.telefone,
+      estudante.cpf,
+      estudante.rgm,
+      estudante.email,
+      estudante.senha,
+      estudante.instituicao,
+      estudante.curso,
+      estudante.periodo,
+      estudante.verificado,
+      estudante.ativo
+    ], callback);
+  },
+
+  update(id, estudante, callback) {
+    const sql = `
+            UPDATE estudantes
+            SET
+                nome = ?,
+                telefone = ?,
+                cpf = ?,
+                rgm = ?,
+                email = ?,
+                senha = ?,
+                instituicao = ?,
+                curso = ?,
+                periodo = ?,
+                verificado = ?,
+                ativo = ?
+            WHERE id = ?
+        `;
+
+    connection.query(sql, [
+      estudante.nome,
+      estudante.telefone,
+      estudante.cpf,
+      estudante.rgm,
+      estudante.email,
+      estudante.senha,
+      estudante.instituicao,
+      estudante.curso,
+      estudante.periodo,
+      estudante.verificado,
+      estudante.ativo,
+      id
+    ], callback);
+  },
+
+  delete(id, callback) {
     const sql = 'DELETE FROM estudantes WHERE id = ?';
-    connection.query(sql, [id]);
-  }
-}
 
-export default new EstudantesModel();
+    connection.query(sql, [id], callback);
+  }
+
+};
+
+export default EstudanteModel;
