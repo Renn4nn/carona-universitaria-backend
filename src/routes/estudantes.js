@@ -4,10 +4,10 @@ import EstudantesController from '../controller/estudantes.js';
 
 const router = Router();
 
-router.get('/estudantes', protegerRota, EstudantesController.findAll);
-router.get('/estudantes/:id', protegerRota, EstudantesController.findById);
-router.post('/estudantes', protegerRota, EstudantesController.create);
-router.put('/estudantes/:id', protegerRota, EstudantesController.update);
-router.delete('/estudantes/:id', protegerRota, EstudantesController.delete);
+router.get('/', protegerRota, EstudantesController.findAll);
+router.get('/:id', protegerRota, EstudantesController.findById);
+router.post('/', protegerRota, EstudantesController.create);
+router.put('/:id', protegerRota, EstudantesController.update);
+router.delete('/:id', protegerRota, EstudantesController.delete);
 
 export default router;
