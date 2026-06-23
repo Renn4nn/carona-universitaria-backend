@@ -1,4 +1,4 @@
-import EstudanteService from "../services/estudantes";
+import EstudanteService from "../services/estudantes.js";
 
 const EstudantesController = {
 

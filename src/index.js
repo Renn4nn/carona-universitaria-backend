@@ -7,6 +7,7 @@ import caronaRoutes from './routes/caronas.js';
 
 const app = express();
 const PORT = 3000;
+const HOST = '0.0.0.0';
 
 app.use(cors())
 app.use(express.json());
@@ -21,6 +22,6 @@ app.use('/estudantes', estudantesRoutes);
 app.use('/caronas', caronaRoutes);
 app.use('/carona-participantes', caronaParticipantesRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`)
+app.listen(PORT, HOST, () => {
+  console.log(`API rodando em http://localhost:${PORT}`);
 });

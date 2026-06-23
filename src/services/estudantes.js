@@ -1,4 +1,4 @@
-import EstudanteModel from "../models/estudantes";
+import EstudanteModel from "../models/estudantes.js";
 
 const EstudanteService = {
 
