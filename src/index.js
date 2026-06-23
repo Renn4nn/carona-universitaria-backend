@@ -4,6 +4,7 @@ import estudantesRoutes from './routes/estudantes.js';
 import authRoutes from './routes/auth.js';
 import caronaParticipantesRoutes from './routes/carona_participantes.js';
 import caronaRoutes from './routes/caronas.js';
+import avaliacoesRoutes from './routes/avaliacoes.js';
 
 const app = express();
 const PORT = 3000;
@@ -21,6 +22,7 @@ app.use('/auth', authRoutes);
 app.use('/estudantes', estudantesRoutes);
 app.use('/caronas', caronaRoutes);
 app.use('/carona-participantes', caronaParticipantesRoutes);
+app.use('/avaliacoes', avaliacoesRoutes);
 
 app.listen(PORT, HOST, () => {
   console.log(`API rodando em http://localhost:${PORT}`);
